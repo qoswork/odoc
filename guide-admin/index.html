@@ -786,7 +786,7 @@ p { margin-bottom: 1.25rem; }
 <div class="details">
 <span id="author" class="author">Copyright (c) 2015-2018 The OpenNMS Group, Inc.</span><br>
 <span id="revnumber"> OpenNMS Horizon 23.0.1,</span>
-<span id="revdate">Last updated 2018-12-21 10:26:22 CST</span>
+<span id="revdate">Last updated 2018-12-22 11:30:11 CST</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -1344,29 +1344,29 @@ p { margin-bottom: 1.25rem; }
 <li><a href="#_example">24.3. Example</a></li>
 </ul>
 </li>
-<li><a href="#ga-telemetryd">25. Telemetry Daemon</a>
+<li><a href="#ga-telemetryd">25. Telemetry 模块(Daemon)</a>
 <ul class="sectlevel2">
-<li><a href="#_what_is_a_listener">25.1. What is a Listener</a></li>
-<li><a href="#_what_is_an_adapter">25.2. What is an Adapter</a></li>
-<li><a href="#_what_are_protocols">25.3. What are Protocols</a></li>
-<li><a href="#_push_sensor_data_through_minion">25.4. Push Sensor Data through Minion</a></li>
-<li><a href="#ga-telemetryd-protocols">25.5. Protocol Reference</a>
+<li><a href="#_什么是侦听器listener">25.1. 什么是侦听器(Listener)</a></li>
+<li><a href="#_什么是适配器adapter">25.2. 什么是适配器(Adapter)</a></li>
+<li><a href="#_什么是协议">25.3. 什么是协议</a></li>
+<li><a href="#_通过_minion_推送传感器数据">25.4. 通过 Minion 推送传感器数据</a></li>
+<li><a href="#ga-telemetryd-protocols">25.5. 协议参考</a>
 <ul class="sectlevel3">
-<li><a href="#_ipfix_interface">25.5.1. IPFIX Interface</a></li>
-<li><a href="#_junos_telemetry_interface">25.5.2. Junos Telemetry Interface</a></li>
-<li><a href="#_netflow_v5_interface">25.5.3. NetFlow v5 Interface</a></li>
-<li><a href="#_netflow_v9_interface">25.5.4. NetFlow v9 Interface</a></li>
+<li><a href="#_ipfix_接口">25.5.1. IPFIX 接口</a></li>
+<li><a href="#_junos_telemetry_接口">25.5.2. Junos Telemetry 接口</a></li>
+<li><a href="#_netflow_v5_接口">25.5.3. NetFlow v5 接口</a></li>
+<li><a href="#_netflow_v9_接口">25.5.4. NetFlow v9 接口</a></li>
 <li><a href="#_cisco_nx_os_telemetry">25.5.5. Cisco NX-OS Telemetry</a></li>
-<li><a href="#_sflow_interface">25.5.6. sFlow Interface</a></li>
+<li><a href="#_sflow_接口">25.5.6. sFlow 接口</a></li>
 </ul>
 </li>
-<li><a href="#ga-telemetryd-listener">25.6. Listener Reference</a>
+<li><a href="#ga-telemetryd-listener">25.6. 侦听器(Listener)参考</a>
 <ul class="sectlevel3">
-<li><a href="#_udp_listener">25.6.1. UDP Listener</a></li>
-<li><a href="#_netflow_v9_udp_listener">25.6.2. Netflow v9 UDP Listener</a></li>
-<li><a href="#_ipfix_udp_listener">25.6.3. IPFIX UDP Listener</a></li>
-<li><a href="#_ipfix_tcp_listener">25.6.4. IPFIX TCP Listener</a></li>
-<li><a href="#_sflow_udp_listener">25.6.5. sFlow UDP Listener</a></li>
+<li><a href="#_udp_侦听器listener">25.6.1. UDP 侦听器(Listener)</a></li>
+<li><a href="#_netflow_v9_udp_侦听器listener">25.6.2. Netflow v9 UDP 侦听器(Listener)</a></li>
+<li><a href="#_ipfix_udp_侦听器listener">25.6.3. IPFIX UDP 侦听器(Listener)</a></li>
+<li><a href="#_ipfix_tcp_侦听器listener">25.6.4. IPFIX TCP 侦听器(Listener)</a></li>
+<li><a href="#_sflow_udp_侦听器listener">25.6.5. sFlow UDP 侦听器(Listener)</a></li>
 </ul>
 </li>
 </ul>
@@ -1457,7 +1457,7 @@ p { margin-bottom: 1.25rem; }
 <h2 id="ga-admin-datachoices">1. 数据选择</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><code>Data Choices（数据选择）</code> 模块收集匿名使用统计数据，并发送到 <a href="https://stats.opennms.org。" class="bare">https://stats.opennms.org。</a></p>
+<p><code>数据选择（Data Choices）</code> 模块收集匿名使用统计数据，并发送到 <a href="https://stats.opennms.org。" class="bare">https://stats.opennms.org。</a></p>
 </div>
 <div class="paragraph">
 <p>当具有 <code>Admin</code> 角色的用户第一次登录系统时，将提示是否希望选择加入来发布这些统计数据。
@@ -30044,38 +30044,38 @@ This is useful for sending messages or operating LED displays via <em>IFTTT</em>
 </div>
 </div>
 <div class="sect1">
-<h2 id="ga-telemetryd">25. Telemetry Daemon</h2>
+<h2 id="ga-telemetryd">25. Telemetry 模块(Daemon)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The telemetry daemon (telemetryd) provides an extensible framework that can be used to handle sensor data pushed to <em>OpenNMS Horizon</em>.
-The extensible framework is used to implement support for a variety of applications which use different protocols to transfer metrics.
-In <em>telemetryd</em> an operator can define a series of protocols, each of which has at least one <em>Listener</em>, and at least one <em>Adapter</em>.</p>
+<p>模块 telemetry (telemetryd) 提供可扩展的框架，可用于处理推送到 <em>OpenNMS Horizon</em> 的传感器数据。
+可扩展框架用于实现对使用不同协议传输指标度量的各种应用程序的支持。
+在 <em>telemetryd</em> 中，操作器(operator)可以定义一系列协议，每个协议至少有一个 <em>侦听器(Listener)</em> 或一个 <em>适配器(Adapter)</em>。</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/telemetryd/telemetryd-overview.png" alt="telemetryd overview">
 </div>
-<div class="title">Figure 41. Generic component overview of protocol implementations in Telemetryd</div>
+<div class="title">Figure 41. Telemetryd 中协议实现的通用组件概述</div>
 </div>
 <div class="paragraph">
-<p>The <em>Listener</em> and <em>Adapter</em> together with it&#8217;s configuration build a <em>Protocol</em> for an application.</p>
+<p><em>侦听器(Listener)</em> 和 <em>适配器(Adapter)</em> 以及它的配置为应用程序构建协议。</p>
 </div>
 <div class="sect2">
-<h3 id="_what_is_a_listener">25.1. What is a Listener</h3>
+<h3 id="_什么是侦听器listener">25.1. 什么是侦听器(Listener)</h3>
 <div class="paragraph">
-<p>A <em>Listener</em> is responsible for receiving sensor data from some external source.
-For example, this may include listening for packets from an UDP socket, retrieving messages from an <em>MQTT</em> topic, etc&#8230;&#8203;
-It is possible to configure multiple <em>Listeners</em>.</p>
+<p><em>侦听器(Listener)</em> 负责从某些外部源接收传感器数据。
+例如，包括侦听来自 UDP socket 的数据包，从 <em>MQTT</em> 主题中检索消息等等。
+可以配置多个 <em>侦听器(Listeners)</em>。</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_what_is_an_adapter">25.2. What is an Adapter</h3>
+<h3 id="_什么是适配器adapter">25.2. 什么是适配器(Adapter)</h3>
 <div class="paragraph">
-<p>An <em>Adapter</em> is responsible for processing the byte streams dispatched by the <em>Listeners</em>.
-For example, this may include decoding a specific <em>JSON</em> format, persisting metrics and/or generating events.</p>
+<p><em>适配器(Adapter)</em> 负责处理 <em>侦听器(Listeners)</em> 转发的字节流。
+例如，包括解码特定的 <em>JSON</em> 格式，存储指标度量 和/或 生成事件。</p>
 </div>
 <div class="paragraph">
-<p>The framework does not make any assumption about the data about being received or processed, leaving this up to the <em>Listener</em> and <em>Adapter</em> implementation.</p>
+<p>该框架不会对有关被接收或处理的数据做任何预处理，而是将其留给 <em>侦听器(Listener)</em> 和 <em>适配器(Adapter)</em> 实现。</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -30084,48 +30084,48 @@ For example, this may include decoding a specific <em>JSON</em> format, persisti
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-In case you have multiple <em>Adapters</em>, the execution order is the same as defined in the <code>telemetryd-configuration.xml</code>.
+如果你有多个 <em>适配器(Adapters)</em>，则执行顺序与 <code>telemetryd-configuration.xml</code> 中定义的相同。
 </td>
 </tr>
 </table>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_what_are_protocols">25.3. What are Protocols</h3>
+<h3 id="_什么是协议">25.3. 什么是协议</h3>
 <div class="paragraph">
-<p>A <em>Protocol</em> is composed with at least one <em>Listener</em> and at least one <em>Adapter</em> and their configuration.
-With a <em>Protocol</em> it is possible to process sensor data from <em>Juniper Telemetry Interface (JTI)</em> or <em>Netflow v5</em>.</p>
+<p>一个 <em>协议(Protocol)</em> 至少由一个 <em>侦听器(Listener)</em> 和至少一个 <em>适配器(Adapter)</em> 以及它的配置组成。
+使用 <em>协议(Protocol)</em> 可以处理来自 <em>Juniper Telemetry Interface (JTI)</em> 或 <em>Netflow v5</em> 的传感器数据。</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_push_sensor_data_through_minion">25.4. Push Sensor Data through Minion</h3>
+<h3 id="_通过_minion_推送传感器数据">25.4. 通过 Minion 推送传感器数据</h3>
 <div class="paragraph">
-<p><em>Listeners</em> may run on either <em>OpenNMS Horizon</em> or <em>Minion</em>, whereas adapters run exclusively on <em>OpenNMS Horizon</em>.
-If a listener is running on <em>Minion</em>, the received messages will be automatically dispatched to the associated adapter(s) running in <em>OpenNMS Horizon</em>.</p>
+<p><em>侦听器(Listeners)</em> 可以在 <em>OpenNMS Horizon</em> 或 <em>Minion</em> 上运行，而适配器(adapters)只在 <em>OpenNMS Horizon</em> 上运行。
+如果侦听器(listener)在 <em>Minion</em> 上运行，则收到的消息将自动转发到 <em>OpenNMS Horizon</em> 中运行的相关适配器(adapter)。</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/telemetryd/telemetryd-minion.png" alt="telemetryd minion">
 </div>
-<div class="title">Figure 42. Running Listener on a Minion forwarding packets using the messaging system</div>
+<div class="title">Figure 42. 使用消息传递系统在 Minion 上运行侦听器(Listener)转发数据包</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="ga-telemetryd-protocols">25.5. Protocol Reference</h3>
+<h3 id="ga-telemetryd-protocols">25.5. 协议参考</h3>
 <div class="sect3">
-<h4 id="_ipfix_interface">25.5.1. IPFIX Interface</h4>
+<h4 id="_ipfix_接口">25.5.1. IPFIX 接口</h4>
 <div class="paragraph">
-<p>The <em>IP Flow Information Export (IPFIX)</em> protocol is a vendor neutral standard standard for transmitting Traffic Flow information.
-See <a href="#ga-flow-support">Flow Support</a> for details on flow support in <em>OpenNMS Horizon</em>.</p>
+<p><em>IP 流量信息导出 (IPFIX)</em> 协议是用于传输流量信息的供应商中立标准。
+有关 <em>OpenNMS Horizon</em> 中流支持的详细信息，请参阅 <a href="#ga-flow-support">流量支持</a>。</p>
 </div>
 <div class="sect4">
-<h5 id="telemetryd-ipfix-adapter">IPFIX Adapter</h5>
+<h5 id="telemetryd-ipfix-adapter">IPFIX 适配器(Adapter)</h5>
 <div class="paragraph">
-<p>The IPFIX adapter is used to handle <em>IPFIX</em> payloads generated by either of the UDP or TCP based IPFIX listeners.
-Flows are decoded from the messages into the canonical flow format and are published to the <em>flow repository</em></p>
+<p>IPFIX 适配器(adapter)用于处理由基于 UDP 或 TCP 的 IPFIX 侦听器(adapter)生成的 <em>IPFIX</em> 有效负载。
+流量(Flows)从消息解码为规范流格式并发布到 <em>流存储库(flow repository)</em>。</p>
 </div>
 <div class="sect5">
-<h6 id="_facts">Facts</h6>
+<h6 id="_定义">定义</h6>
 <table class="tableblock frame-all grid-all fit-content">
 <colgroup>
 <col>
@@ -30133,53 +30133,53 @@ Flows are decoded from the messages into the canonical flow format and are publi
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Class Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.opennms.netmgt.telemetry.adapters.netflow.ipfix.IpfixAdapter</code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect5">
-<h6 id="_parameters">Parameters</h6>
+<h6 id="_参数">参数</h6>
 <div class="paragraph">
-<p>This adapter does not currently have any configurable parameters.</p>
+<p>此适配器当前没有任何配置参数。</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_junos_telemetry_interface">25.5.2. Junos Telemetry Interface</h4>
+<h4 id="_junos_telemetry_接口">25.5.2. Junos Telemetry 接口</h4>
 <div class="paragraph">
-<p>The <em>Junos Telemetry Interface (JTI)</em> allows to push operational statistics asynchronously to <em>OpenNMS Horizon</em>.
-<em>OpenNMS Horizon</em> sends a request to stream periodic updates once to the device.
-Data is generated as Google protocol buffers (gpb) structured messages over <em>UDP</em>.
-Detailed information about <em>JTI</em> can be found in <a href="https://www.juniper.net/documentation/en_US/junos/topics/concept/junos-telemetry-interface-oveview.html">Juniper Documentation</a>.</p>
+<p><em>Junos Telemetry 接口 (JTI)</em> 允许将操作统计信息异步推送到 <em>OpenNMS Horizon</em>。
+<em>OpenNMS Horizon</em> 发送一次请求，设备的流将定期更新一次。
+数据通过 <em>UDP</em> 生成 Google protocol buffers (gpb) 的结构化消息。
+有关 <em>JTI</em> 的详细信息，请参阅 <a href="https://www.juniper.net/documentation/en_US/junos/topics/concept/junos-telemetry-interface-oveview.html">Juniper 文档</a>。</p>
 </div>
 <div class="paragraph">
-<p>To enable support for Junos Telemetry Interface (JTI), edit <code>${OPENNMS_HOME}/etc/telemetryd-configuration.xml</code> set <code>enabled=true</code> for <code>JTI</code> protocol.</p>
+<p>要启用对 Junos Telemetry 接口 (JTI) 的支持，请编辑 <code>${OPENNMS_HOME}/etc/telemetryd-configuration.xml</code> 文件，并将 <code>JTI</code> 相应协议设置为 <code>enabled=true</code>。</p>
 </div>
 <div class="listingblock">
-<div class="title">Enable JTI protocol in telemetryd-configuration.xml</div>
+<div class="title">在 telemetryd-configuration.xml 中启用 JTI 协议</div>
 <div class="content">
 <pre class="prettyprint highlight"><code class="language-xml" data-lang="xml">&lt;protocol name="JTI" description="Junos Telemetry Interface (JTI)" enabled="true"&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Apply the changes without restarting by sending a <code>reloadDaemonConfig</code> event in the CLI or the WebUI:</p>
+<p>通过在 CLI 或 WebUI 中发送 <code>reloadDaemonConfig</code> 事件来应用更改，不用重新启动:</p>
 </div>
 <div class="listingblock">
-<div class="title">Send a reloadDaemonConfig event through CLI</div>
+<div class="title">通过 CLI 发送 reloadDaemonConfig 事件</div>
 <div class="content">
 <pre class="prettyprint highlight"><code>${OPENNMS_HOME}bin/send-event.pl -p 'daemonName Telemetryd' uei.opennms.org/internal/reloadDaemonConfig</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>By default, this will open a UDP socket bound to <code>0.0.0.0:50000</code> to which <em>JTI</em> messages can be forwarded.</p>
+<p>默认情况下，这将打开一个绑定到 <code>0.0.0.0:50000</code> 的 UDP socket，可以转发 <em>JTI</em> 消息。</p>
 </div>
 <div class="sect4">
-<h5 id="_configure_jti_listener_on_a_minion">Configure JTI Listener on a Minion</h5>
+<h5 id="_在_minion_上配置_jti_侦听器listener">在 Minion 上配置 JTI 侦听器(Listener)</h5>
 <div class="paragraph">
-<p>To enable and configure an <em>UDP Listener</em> for JTI on Minion, connect to the <em>Karaf Console</em> and set the following properties:</p>
+<p>要在 Minion 上为 JTI 启用并配置一个 <em>UDP 侦听器(Listener)</em>，请连接到 <em>Karaf Console</em> 并设置以下属性:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -30199,21 +30199,21 @@ admin@minion()&gt; config:update</code></pre>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The protocol must also be enabled on <em>OpenNMS Horizon</em> for the messages to be processed.
+还必须在 <em>OpenNMS Horizon</em> 上启用该协议，来处理消息。
 </td>
 </tr>
 </table>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_jti_adapter">JTI Adapter</h5>
+<h5 id="_jti_适配器adapter">JTI 适配器(Adapter)</h5>
 <div class="paragraph">
-<p>The JTI adapter is used to handle <em>Junos Telemetry Interface</em> payloads.
-Messages are decoded using the published protobuf specifications and forwarded to a JSR-223 compatible script (i.e. Beanshell or Groovy) for further processing.
-Using the script extension you can extract the desired metrics from the JTI messages and persist the results as time series data.</p>
+<p>JTI 适配器用于处理 <em>Junos Telemetry 接口</em> 有效负载。
+使用已发布的 protobuf 规范对消息进行解码，并将其转发到 JSR-223 兼容脚本(例如 Beanshell 或 Groovy)，以进行进一步处理。
+使用脚本扩展，你可以从 JTI 消息中提取所需的指标度量，并将结果保存为时间序列数据。</p>
 </div>
 <div class="sect5">
-<h6 id="_facts_2">Facts</h6>
+<h6 id="_定义_2">定义</h6>
 <table class="tableblock frame-all grid-all fit-content">
 <colgroup>
 <col>
@@ -30221,16 +30221,16 @@ Using the script extension you can extract the desired metrics from the JTI mess
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Class Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.opennms.netmgt.telemetry.adapters.jti.JtiGpbAdapter</code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect5">
-<h6 id="_parameters_2">Parameters</h6>
+<h6 id="_参数_2">参数</h6>
 <table class="tableblock frame-all grid-all fit-content">
-<caption class="title">Table 127. Adapter specific parameters for the JtiGpbAdapter</caption>
+<caption class="title">Table 127. 适配器 JtiGpbAdapter 的特定参数</caption>
 <colgroup>
 <col>
 <col>
@@ -30239,16 +30239,16 @@ Using the script extension you can extract the desired metrics from the JTI mess
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Parameter</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Required</th>
-<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">描述</th>
+<th class="tableblock halign-left valign-top">需要</th>
+<th class="tableblock halign-left valign-top">默认值</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>script</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Full path to the script used to handle the JTI messages</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">用于处理 JTI 消息的脚本的完整路径</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">required</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">(none)</p></td>
 </tr>
@@ -30256,15 +30256,15 @@ Using the script extension you can extract the desired metrics from the JTI mess
 </table>
 </div>
 <div class="sect5">
-<h6 id="_scripting">Scripting</h6>
+<h6 id="_脚本">脚本</h6>
 <div class="paragraph">
-<p>The script will be invoked for every JTI message that is received and succesfully decoded.</p>
+<p>将为每个接收并成功解码的 JTI 消息调用改脚本。</p>
 </div>
 <div class="paragraph">
-<p>The following globals will be passed to the script:</p>
+<p>以下全局变量将传递给脚本:</p>
 </div>
 <table class="tableblock frame-all grid-all fit-content">
-<caption class="title">Table 128. Globals passed to the script</caption>
+<caption class="title">Table 128. 传递给脚本的全局变量</caption>
 <colgroup>
 <col>
 <col>
@@ -30272,25 +30272,25 @@ Using the script extension you can extract the desired metrics from the JTI mess
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Parameter</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">描述</th>
+<th class="tableblock halign-left valign-top">类型</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>agent</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The agent (node) against which the metrics will be associated</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">与指标度量关联的代理 (node)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.opennms.netmgt.collection.api.CollectionAgent</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>builder</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Builder in which the resources and metrics should be added</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">应在其中添加资源和指标的构建器</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.opennms.netmgt.collection.support.builder.CollectionSetBuilder</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>msg</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Decoded JTI message from which the metrics should be extracted</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">解码 JTI 消息，并从中提取指标度量</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.opennms.netmgt.telemetry.adapters.jti.proto.TelemetryTop</code></p></td>
 </tr>
 </tbody>
@@ -30299,17 +30299,17 @@ Using the script extension you can extract the desired metrics from the JTI mess
 </div>
 </div>
 <div class="sect3">
-<h4 id="_netflow_v5_interface">25.5.3. NetFlow v5 Interface</h4>
+<h4 id="_netflow_v5_接口">25.5.3. NetFlow v5 接口</h4>
 <div class="paragraph">
-<p>See <a href="#ga-flow-support">Flow Support</a> for details on flow support in <em>OpenNMS Horizon</em>.</p>
+<p>有关 <em>OpenNMS Horizon</em> 中流支持的详细信息，请参阅 <a href="#ga-flow-support">流量支持</a>。</p>
 </div>
 <div class="sect4">
-<h5 id="telemetryd-netflow5-adapter">NetFlow v5 Adapter</h5>
+<h5 id="telemetryd-netflow5-adapter">NetFlow v5 适配器(Adapter)</h5>
 <div class="paragraph">
-<p>The NetFlow v5 adapter is used to handle <em>NetFlow v5</em> payloads.</p>
+<p>NetFlow v5 适配器用于处理 <em>NetFlow v5</em> 有效负载。</p>
 </div>
 <div class="sect5">
-<h6 id="_facts_3">Facts</h6>
+<h6 id="_定义_3">定义</h6>
 <table class="tableblock frame-all grid-all fit-content">
 <colgroup>
 <col>
@@ -30317,33 +30317,33 @@ Using the script extension you can extract the desired metrics from the JTI mess
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Class Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.opennms.netmgt.telemetry.adapters.netflow.Netflow5Adapter</code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect5">
-<h6 id="_parameters_3">Parameters</h6>
+<h6 id="_参数_3">参数</h6>
 <div class="paragraph">
-<p>This adapter does not currently have any configurable parameters.</p>
+<p>此适配器当前没有任何配置参数。</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_netflow_v9_interface">25.5.4. NetFlow v9 Interface</h4>
+<h4 id="_netflow_v9_接口">25.5.4. NetFlow v9 接口</h4>
 <div class="paragraph">
-<p>See <a href="#ga-flow-support">Flow Support</a> for details on flow support in <em>OpenNMS Horizon</em>.</p>
+<p>有关 <em>OpenNMS Horizon</em> 中流支持的详细信息，请参阅 <a href="#ga-flow-support">流量支持</a>。</p>
 </div>
 <div class="sect4">
-<h5 id="telemetryd-netflow9-adapter">Netflow v9 Adapter</h5>
+<h5 id="telemetryd-netflow9-adapter">Netflow v9 适配器(Adapter)</h5>
 <div class="paragraph">
-<p>The Netflow v9 adapter is used to handle <em>Netflow v9</em> payloads generated by the Netflov9 UDP listener.
-Flows are decoded from the messages into the canonical flow format and are published to the <em>flow repository</em></p>
+<p>Netflow v9 适配器用于处理 Netflov9 UDP 侦听器生成的 <em>Netflow v9</em> 有效负载。
+流量(Flows)从消息解码为规范流格式并发布到 <em>流存储库(flow repository)</em>。</p>
 </div>
 <div class="sect5">
-<h6 id="_facts_4">Facts</h6>
+<h6 id="_定义_4">定义</h6>
 <table class="tableblock frame-all grid-all fit-content">
 <colgroup>
 <col>
@@ -30351,16 +30351,16 @@ Flows are decoded from the messages into the canonical flow format and are publi
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Class Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.opennms.netmgt.telemetry.adapters.netflow.v9.Netflow9Adapter</code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect5">
-<h6 id="_parameters_4">Parameters</h6>
+<h6 id="_参数_4">参数</h6>
 <div class="paragraph">
-<p>This adapter does not currently have any configurable parameters.</p>
+<p>此适配器当前没有任何配置参数。</p>
 </div>
 </div>
 </div>
@@ -30368,36 +30368,36 @@ Flows are decoded from the messages into the canonical flow format and are publi
 <div class="sect3">
 <h4 id="_cisco_nx_os_telemetry">25.5.5. Cisco NX-OS Telemetry</h4>
 <div class="paragraph">
-<p>The <em>Cisco NX-OS Telemetry</em> allows to push operational statistics asynchronously to <em>OpenNMS Horizon</em>.
-<em>OpenNMS Horizon</em> sends a request to stream periodic updates once to the device.
-Data is generated as Google protocol buffers (gpb) structured messages over <em>UDP</em>.
-Detailed information about <em>NX-OS</em> can be found in <a href="https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/7-x/programmability/guide/b_Cisco_Nexus_9000_Series_NX-OS_Programmability_Guide_7x/b_Cisco_Nexus_9000_Series_NX-OS_Programmability_Guide_7x_chapter_011000.html">NXOS Documentation</a>.</p>
+<p><em>Cisco NX-OS Telemetry</em> 允许将操作统计信息异步推送到 <em>OpenNMS Horizon</em>。
+<em>OpenNMS Horizon</em> 发送一次请求，设备的流将定期更新一次。
+数据通过 <em>UDP</em> 生成 Google protocol buffers (gpb) 的结构化消息。
+有关 <em>NX-OS</em> 的详细信息，请参阅 <a href="https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/7-x/programmability/guide/b_Cisco_Nexus_9000_Series_NX-OS_Programmability_Guide_7x/b_Cisco_Nexus_9000_Series_NX-OS_Programmability_Guide_7x_chapter_011000.html">NXOS 文档</a>。</p>
 </div>
 <div class="paragraph">
-<p>To enable support for NX-OS Telemetry, edit <code>${OPENNMS_HOME}/etc/telemetryd-configuration.xml</code> set <code>enabled=true</code> for <code>NXOS</code> protocol.</p>
+<p>要启用对 NX-OS Telemetry 的支持，请编辑 <code>${OPENNMS_HOME}/etc/telemetryd-configuration.xml</code> 文件，并将 <code>NXOS</code> 的相应协议设置为 <code>enabled=true</code>。</p>
 </div>
 <div class="listingblock">
-<div class="title">Enable NX-OS protocol in telemetryd-configuration.xml</div>
+<div class="title">在 telemetryd-configuration.xml 中启用 NX-OS 协议</div>
 <div class="content">
 <pre class="prettyprint highlight"><code class="language-xml" data-lang="xml">&lt;protocol name="NXOS" description="Cisco NX-OS Telemetry" enabled="true"&gt;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Apply the changes without restarting by sending a <code>reloadDaemonConfig</code> event in the CLI or the WebUI:</p>
+<p>通过在 CLI 或 WebUI 中发送 <code>reloadDaemonConfig</code> 事件来应用更改，不用重新启动:</p>
 </div>
 <div class="listingblock">
-<div class="title">Send a reloadDaemonConfig event through CLI</div>
+<div class="title">通过 CLI 发送 reloadDaemonConfig 事件</div>
 <div class="content">
 <pre class="prettyprint highlight"><code>${OPENNMS_HOME}bin/send-event.pl -p 'daemonName Telemetryd' uei.opennms.org/internal/reloadDaemonConfig</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>By default, this will open a UDP socket bound to <code>0.0.0.0:50001</code> to which <em>NXOS</em> messages can be forwarded.</p>
+<p>默认情况下，这将打开一个绑定到 <code>0.0.0.0:50001</code> 的 UDP socket，可以转发 <em>NXOS</em> 消息。</p>
 </div>
 <div class="sect4">
-<h5 id="_configure_nx_os_listener_on_a_minion">Configure NX-OS Listener on a Minion</h5>
+<h5 id="_在_minion_上配置_nx_os_侦听器listener">在 Minion 上配置 NX-OS 侦听器(Listener)</h5>
 <div class="paragraph">
-<p>To enable and configure an <em>UDP Listener</em> for NX-OS on Minion, connect to the <em>Karaf Console</em> and set the following properties:</p>
+<p>要在 Minion 上为 NX-OS 启用并配置一个 <em>UDP 侦听器(Listener)</em>，请连接到 <em>Karaf Console</em> 并设置以下属性:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -30417,21 +30417,21 @@ admin@minion()&gt; config:update</code></pre>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The protocol must also be enabled on <em>OpenNMS Horizon</em> for the messages to be processed.
+还必须在 <em>OpenNMS Horizon</em> 上启用该协议，来处理消息。
 </td>
 </tr>
 </table>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_cisco_nx_os_adapter">Cisco NX-OS Adapter</h5>
+<h5 id="_cisco_nx_os_适配器adapter">Cisco NX-OS 适配器(Adapter)</h5>
 <div class="paragraph">
-<p>The NX-OS adapter is used to handle <em>Cisco NX-OS Telemetry</em> payloads.
-Messages are decoded using the published protobuf (proto3) specifications and forwarded to a JSR-223 compatible script (i.e. Beanshell or Groovy) for further processing.
-Using the script extension you can extract the desired metrics from the NX-OS messages and persist the results as time series data.</p>
+<p>JTI 适配器用于处理 <em>Cisco NX-OS Telemetry</em> 有效负载。
+使用已发布的 protobuf 规范对消息进行解码，并将其转发到 JSR-223 兼容脚本(例如 Beanshell 或 Groovy)，以进行进一步处理。
+使用脚本扩展，你可以从 NX-OS 消息中提取所需的指标度量，并将结果保存为时间序列数据。</p>
 </div>
 <div class="sect5">
-<h6 id="_facts_5">Facts</h6>
+<h6 id="_定义_5">定义</h6>
 <table class="tableblock frame-all grid-all fit-content">
 <colgroup>
 <col>
@@ -30439,16 +30439,16 @@ Using the script extension you can extract the desired metrics from the NX-OS me
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Class Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.opennms.netmgt.telemetry.adapters.nxos.NxosGpbAdapter</code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect5">
-<h6 id="_parameters_5">Parameters</h6>
+<h6 id="_参数_5">参数</h6>
 <table class="tableblock frame-all grid-all fit-content">
-<caption class="title">Table 129. Adapter specific parameters for the NxosGpbAdapter</caption>
+<caption class="title">Table 129. 适配器 NxosGpbAdapter 的特定参数</caption>
 <colgroup>
 <col>
 <col>
@@ -30457,16 +30457,16 @@ Using the script extension you can extract the desired metrics from the NX-OS me
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Parameter</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Required</th>
-<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">描述</th>
+<th class="tableblock halign-left valign-top">需要</th>
+<th class="tableblock halign-left valign-top">默认值</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>script</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Full path to the script used to handle the NXOS messages</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">用于处理 NXOS 消息的脚本的完整路径</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">required</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">(none)</p></td>
 </tr>
@@ -30474,15 +30474,15 @@ Using the script extension you can extract the desired metrics from the NX-OS me
 </table>
 </div>
 <div class="sect5">
-<h6 id="_scripting_2">Scripting</h6>
+<h6 id="_脚本_2">脚本</h6>
 <div class="paragraph">
-<p>The script will be invoked for every NX-OS message that is received and succesfully decoded.</p>
+<p>将为每个接收并成功解码的 NX-OS 消息调用改脚本。</p>
 </div>
 <div class="paragraph">
-<p>The following globals will be passed to the script:</p>
+<p>以下全局变量将传递给脚本:</p>
 </div>
 <table class="tableblock frame-all grid-all fit-content">
-<caption class="title">Table 130. Globals passed to the script</caption>
+<caption class="title">Table 130. 传递给脚本的全局变量</caption>
 <colgroup>
 <col>
 <col>
@@ -30490,25 +30490,25 @@ Using the script extension you can extract the desired metrics from the NX-OS me
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Parameter</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">描述</th>
+<th class="tableblock halign-left valign-top">类型</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>agent</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The agent (node) against which the metrics will be associated</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">与指标度量关联的代理 (node)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.opennms.netmgt.collection.api.CollectionAgent</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>builder</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Builder in which the resources and metrics should be added</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">应在其中添加资源和指标的构建器</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.opennms.netmgt.collection.support.builder.CollectionSetBuilder</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>msg</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Decoded NX-OS message from which the metrics should be extracted</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">解码 NX-OS 消息，并从中提取指标度量</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.opennms.netmgt.telemetry.adapters.nxos.proto.TelemetryBis</code></p></td>
 </tr>
 </tbody>
@@ -30517,18 +30517,18 @@ Using the script extension you can extract the desired metrics from the NX-OS me
 </div>
 </div>
 <div class="sect3">
-<h4 id="_sflow_interface">25.5.6. sFlow Interface</h4>
+<h4 id="_sflow_接口">25.5.6. sFlow 接口</h4>
 <div class="paragraph">
-<p>See <a href="#ga-flow-support">Flow Support</a> for details on flow support in <em>OpenNMS Horizon</em>.</p>
+<p>有关 <em>OpenNMS Horizon</em> 中流支持的详细信息，请参阅 <a href="#ga-flow-support">流量支持</a>。</p>
 </div>
 <div class="sect4">
-<h5 id="telemetryd-sflow-adapter">sFlow Adapter</h5>
+<h5 id="telemetryd-sflow-adapter">sFlow 适配器(Adapter)</h5>
 <div class="paragraph">
-<p>The sFlow adapter is used to handle <em>sFlow</em> payloads generated by the sFlow listener.
-Flows are decoded from the messages into the canonical flow format and are published to the <em>flow repository</em>.</p>
+<p>IPFIX 适配器(adapter)用于处理 sFlow 侦听器(adapter)生成的 <em>sFlow</em> 有效负载。
+流量(Flows)从消息解码为规范流格式并发布到 <em>流存储库(flow repository)</em>。</p>
 </div>
 <div class="sect5">
-<h6 id="_facts_6">Facts</h6>
+<h6 id="_定义_6">定义</h6>
 <table class="tableblock frame-all grid-all fit-content">
 <colgroup>
 <col>
@@ -30536,30 +30536,30 @@ Flows are decoded from the messages into the canonical flow format and are publi
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Class Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.opennms.netmgt.telemetry.adapters.netflow.sflow.SFlowAdapter</code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect5">
-<h6 id="_parameters_6">Parameters</h6>
+<h6 id="_参数_6">参数</h6>
 <div class="paragraph">
-<p>This adapter does not currently have any configurable parameters.</p>
+<p>此适配器当前没有任何配置参数。</p>
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="ga-telemetryd-listener">25.6. Listener Reference</h3>
+<h3 id="ga-telemetryd-listener">25.6. 侦听器(Listener)参考</h3>
 <div class="sect3">
-<h4 id="_udp_listener">25.6.1. UDP Listener</h4>
+<h4 id="_udp_侦听器listener">25.6.1. UDP 侦听器(Listener)</h4>
 <div class="paragraph">
-<p>The UDP listener can be used to open a simple UDP socket and build messages from the received packets.</p>
+<p>UDP 侦听器用于打开普通的 UDP socket，并从接收的数据包构建消息。</p>
 </div>
 <div class="sect4">
-<h5 id="_facts_7">Facts</h5>
+<h5 id="_定义_7">定义</h5>
 <table class="tableblock frame-all grid-all fit-content">
 <colgroup>
 <col>
@@ -30567,20 +30567,20 @@ Flows are decoded from the messages into the canonical flow format and are publi
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Class Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.opennms.netmgt.telemetry.listeners.udp.UdpListener</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Supported on Minion</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Minion 支持</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Yes</code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_parameters_7">Parameters</h5>
+<h5 id="_参数_7">参数</h5>
 <table class="tableblock frame-all grid-all fit-content">
-<caption class="title">Table 131. Listener specific parameters for the UdpListener</caption>
+<caption class="title">Table 131. UdpListener 的侦听器特定参数</caption>
 <colgroup>
 <col>
 <col>
@@ -30589,28 +30589,28 @@ Flows are decoded from the messages into the canonical flow format and are publi
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Parameter</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Required</th>
-<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">描述</th>
+<th class="tableblock halign-left valign-top">必须</th>
+<th class="tableblock halign-left valign-top">默认值</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>host</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">IP address on which to bind the UDP port</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">绑定 UDP 端口的 IP 地址</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">optional</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>0.0.0.0</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>port</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">UDP port number on which to listen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">要侦听的 UDP 端口号</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">optional</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>50000</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>maxPacketSize</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum packet size in bytes (anything greater will be truncated)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">最大数据包大小，单位字节 (更大的数据将被截断)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">optional</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>8096</code></p></td>
 </tr>
@@ -30619,12 +30619,12 @@ Flows are decoded from the messages into the canonical flow format and are publi
 </div>
 </div>
 <div class="sect3">
-<h4 id="_netflow_v9_udp_listener">25.6.2. Netflow v9 UDP Listener</h4>
+<h4 id="_netflow_v9_udp_侦听器listener">25.6.2. Netflow v9 UDP 侦听器(Listener)</h4>
 <div class="paragraph">
-<p>This UDP based listener can be used to open a UDP socket to deal with incoming Netflow v9 packets.</p>
+<p>此基于 UDP 侦听器用来打开 UDP socket，以处理传入的 Netflow v9 数据包。</p>
 </div>
 <div class="sect4">
-<h5 id="_facts_8">Facts</h5>
+<h5 id="_定义_8">定义</h5>
 <table class="tableblock frame-all grid-all fit-content">
 <colgroup>
 <col>
@@ -30632,20 +30632,20 @@ Flows are decoded from the messages into the canonical flow format and are publi
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Class Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.opennms.netmgt.telemetry.listeners.flow.netflow9.UdpListener</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Supported on Minion</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Minion 支持</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Yes</code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_parameters_8">Parameters</h5>
+<h5 id="_参数_8">参数</h5>
 <table class="tableblock frame-all grid-all fit-content">
-<caption class="title">Table 132. Listener specific parameters for the Netflow v9 UDP listener</caption>
+<caption class="title">Table 132. Netflow v9 UDP 侦听器的特定参数</caption>
 <colgroup>
 <col>
 <col>
@@ -30654,34 +30654,34 @@ Flows are decoded from the messages into the canonical flow format and are publi
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Parameter</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Required</th>
-<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">描述</th>
+<th class="tableblock halign-left valign-top">必须</th>
+<th class="tableblock halign-left valign-top">默认值</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>host</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">IP address on which to bind the UDP socket</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">绑定 UDP socket 的 IP 地址</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">optional</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>0.0.0.0</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>port</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">UDP port number on which to listen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">要侦听的 UDP 端口号</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">optional</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>4738</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>maxPacketSize</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum packet size in bytes (anything greater will be truncated)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">最大数据包大小，单位字节 (更大的数据将被截断)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">optional</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>8096</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>templateTimeout</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Number of milliseconds after which templates timeout</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">模板超时后的毫秒数</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">optional</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>1800000</code> (30 minutes)</p></td>
 </tr>
@@ -30690,12 +30690,12 @@ Flows are decoded from the messages into the canonical flow format and are publi
 </div>
 </div>
 <div class="sect3">
-<h4 id="_ipfix_udp_listener">25.6.3. IPFIX UDP Listener</h4>
+<h4 id="_ipfix_udp_侦听器listener">25.6.3. IPFIX UDP 侦听器(Listener)</h4>
 <div class="paragraph">
-<p>This UDP based listener can be used to open a UDP socket to deal with incoming IPFIX packets.</p>
+<p>此基于 UDP 侦听器用来打开 UDP socket，以处理传入的 IPFIX 数据包。</p>
 </div>
 <div class="sect4">
-<h5 id="_facts_9">Facts</h5>
+<h5 id="_定义_9">定义</h5>
 <table class="tableblock frame-all grid-all fit-content">
 <colgroup>
 <col>
@@ -30703,20 +30703,20 @@ Flows are decoded from the messages into the canonical flow format and are publi
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Class Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.opennms.netmgt.telemetry.listeners.flow.ipfix.UdpListener</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Supported on Minion</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Minion 支持</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Yes</code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_parameters_9">Parameters</h5>
+<h5 id="_参数_9">参数</h5>
 <table class="tableblock frame-all grid-all fit-content">
-<caption class="title">Table 133. Listener specific parameters for the IPFIX UDP listener</caption>
+<caption class="title">Table 133. IPFIX UDP 侦听器的特定参数</caption>
 <colgroup>
 <col>
 <col>
@@ -30725,34 +30725,34 @@ Flows are decoded from the messages into the canonical flow format and are publi
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Parameter</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Required</th>
-<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">描述</th>
+<th class="tableblock halign-left valign-top">必须</th>
+<th class="tableblock halign-left valign-top">默认值</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>host</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">IP address on which to bind the UDP socket</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">绑定 UDP socket 的 IP 地址</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">optional</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>0.0.0.0</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>port</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">UDP port number on which to listen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">要侦听的 UDP 端口号</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">optional</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>4738</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>maxPacketSize</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum packet size in bytes (anything greater will be truncated)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">最大数据包大小，单位字节 (更大的数据将被截断)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">optional</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>8096</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>templateTimeout</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Number of milliseconds after which templates timeout</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">模板超时后的毫秒数</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">optional</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>1800000</code> (30 minutes)</p></td>
 </tr>
@@ -30761,12 +30761,12 @@ Flows are decoded from the messages into the canonical flow format and are publi
 </div>
 </div>
 <div class="sect3">
-<h4 id="_ipfix_tcp_listener">25.6.4. IPFIX TCP Listener</h4>
+<h4 id="_ipfix_tcp_侦听器listener">25.6.4. IPFIX TCP 侦听器(Listener)</h4>
 <div class="paragraph">
-<p>This TCP based listener can be used to open a TCP socket to deal with IPFIX sessions.</p>
+<p>此基于 TCP 侦听器用来打开 TCP socket，以处理传入的 IPFIX 会话(sessions)。</p>
 </div>
 <div class="sect4">
-<h5 id="_facts_10">Facts</h5>
+<h5 id="_定义_10">定义</h5>
 <table class="tableblock frame-all grid-all fit-content">
 <colgroup>
 <col>
@@ -30774,20 +30774,20 @@ Flows are decoded from the messages into the canonical flow format and are publi
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Class Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.opennms.netmgt.telemetry.listeners.flow.ipfix.TcpListener</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Supported on Minion</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Minion 支持</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Yes</code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_parameters_10">Parameters</h5>
+<h5 id="_参数_10">参数</h5>
 <table class="tableblock frame-all grid-all fit-content">
-<caption class="title">Table 134. Listener specific parameters for the IPFIX TCP listener</caption>
+<caption class="title">Table 134. IPFIX TCP 侦听器的特定参数</caption>
 <colgroup>
 <col>
 <col>
@@ -30796,22 +30796,22 @@ Flows are decoded from the messages into the canonical flow format and are publi
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Parameter</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Required</th>
-<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">描述</th>
+<th class="tableblock halign-left valign-top">必须</th>
+<th class="tableblock halign-left valign-top">默认值</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>host</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">IP address on which to bind the TCP socket</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">绑定 TCP socket 的 IP 地址</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">optional</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>0.0.0.0</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>port</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TCP port number on which to listen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">要侦听的 TCP 端口号</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">optional</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>4739</code></p></td>
 </tr>
@@ -30820,12 +30820,12 @@ Flows are decoded from the messages into the canonical flow format and are publi
 </div>
 </div>
 <div class="sect3">
-<h4 id="_sflow_udp_listener">25.6.5. sFlow UDP Listener</h4>
+<h4 id="_sflow_udp_侦听器listener">25.6.5. sFlow UDP 侦听器(Listener)</h4>
 <div class="paragraph">
-<p>This UDP based listener can be used to open a UDP socket to deal with incoming sFlow packets.</p>
+<p>此基于 UDP 侦听器用来打开 UDP socket，以处理传入的 sFlow 数据包。</p>
 </div>
 <div class="sect4">
-<h5 id="_facts_11">Facts</h5>
+<h5 id="_定义_11">定义</h5>
 <table class="tableblock frame-all grid-all fit-content">
 <colgroup>
 <col>
@@ -30833,20 +30833,20 @@ Flows are decoded from the messages into the canonical flow format and are publi
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Class Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.opennms.netmgt.telemetry.listeners.sflow.Listener</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Supported on Minion</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Minion 支持</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Yes</code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_parameters_11">Parameters</h5>
+<h5 id="_参数_11">参数</h5>
 <table class="tableblock frame-all grid-all fit-content">
-<caption class="title">Table 135. Listener specific parameters for the sFlow UDP listener</caption>
+<caption class="title">Table 135. sFlow UDP 侦听器的特定参数</caption>
 <colgroup>
 <col>
 <col>
@@ -30855,28 +30855,28 @@ Flows are decoded from the messages into the canonical flow format and are publi
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Parameter</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Required</th>
-<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">参数</th>
+<th class="tableblock halign-left valign-top">描述</th>
+<th class="tableblock halign-left valign-top">必须</th>
+<th class="tableblock halign-left valign-top">默认值</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>host</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">IP address on which to bind the UDP socket</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">绑定 UDP socket 的 IP 地址</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">optional</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>0.0.0.0</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>port</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">UDP port number on which to listen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">要侦听的 UDP 端口号</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">optional</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>6343</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>maxPacketSize</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum packet size in bytes (anything greater will be truncated)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">最大数据包大小，单位字节 (更大的数据将被截断)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">optional</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>8096</code></p></td>
 </tr>
@@ -33507,7 +33507,7 @@ This configuration is stored in <code>${OPENNMS_HOME/etc/org.opennms.features.si
 <div id="footer">
 <div id="footer-text">
  OpenNMS Horizon 23.0.1<br>
-Last updated 2018-12-21 10:26:22 CST
+Last updated 2018-12-22 11:30:11 CST
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
